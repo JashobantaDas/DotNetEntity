@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("EmpEntityApp")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+6f70b1107a11369275c190560074b48d9954fc22")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+bcacffe9da8a2a95655718a9b2c9d32a63e1f100")]
 [assembly: System.Reflection.AssemblyProductAttribute("EmpEntityApp")]
 [assembly: System.Reflection.AssemblyTitleAttribute("EmpEntityApp")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

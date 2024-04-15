@@ -1,16 +1,58 @@
+using EmpEntityApp.Data;
 using EmpEntityApp.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
 namespace EmpEntityApp.Controllers
 {
+
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
 
-        public HomeController(ILogger<HomeController> logger)
+        private readonly AppDbContext _appDbContext;
+
+        public HomeController(ILogger<HomeController> logger, AppDbContext appDbContext)
         {
             _logger = logger;
+            _appDbContext = appDbContext;
+        }
+
+        [HttpGet]
+        public IActionResult GetAllUser() { 
+            var results = _appDbContext.User.ToList();
+
+            return View();
+        }
+
+        public IActionResult AddRole()
+        {
+            ViewBag.Sucess = "";
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult AddRole(RoleModel roleModel)
+        {
+            var chk = ModelState.IsValid;
+            if (chk)
+            {
+                Role role = new Role();
+                role.UserRole = roleModel.RoleName.ToString();
+                _appDbContext.Role.Add(role);
+                int changes = _appDbContext.SaveChanges();
+                if ( changes > 0)
+                {
+                    ViewBag.Success = "Inserted";
+
+                }
+                else
+                {
+                    ViewBag.Success = "NotInserted";
+                }
+                ModelState.Clear();
+            }
+            return View();
         }
 
         public IActionResult Index()
